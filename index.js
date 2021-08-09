@@ -86,13 +86,39 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => { 
+        if (err) throw err;
+        console.log('File saved.');
+    })
+}
 
-// TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions)
-    .then(data => console.log(data));
-    //.then(data => writeToFile('README.md', markdown(data)));
+    //inquirer.prompt(questions)
+    //.then(data => console.log(data));
+    //.then(data => writeToFile('./output/README.md', markdown(data)));
+    const data = {
+        title: 'test',
+        description: 'a test project',
+        sections: [
+            'Installation',
+            'Usage',
+            'License',
+            'Contributing',
+            'Tests',
+            'Questions'
+        ],
+        installation: 'npm install it',
+        usage: "don't break it",
+        license: 'MIT License',
+        contributing: 'dont bother me',
+        tests: 'no',
+        username: 'githubusername',
+        email: 'my@email.me',
+        questions: "don't bother me"
+    }
+
+    writeToFile('./output/README.md', markdown(data));
 }
 
 // Function call to initialize app
