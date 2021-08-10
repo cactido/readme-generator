@@ -1,11 +1,11 @@
 //returns an MD syntax license badge if a license was selected
 function renderLicenseBadge(license) {
   const badges = {
-      'Apache License 2.0': '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]',
-      'ISC': ' [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)]',
-      'GNU GPL v2.0': '[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)]',
-      'GNU GPL v3.0': '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]',
-      'MIT License': '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]'
+      'Apache License 2.0': '![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)',
+      'ISC': '![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)',
+      'GNU GPL v2.0': '![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)',
+      'GNU GPL v3.0': '![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)',
+      'MIT License': '![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)'
     }
   //returns license link if a license was requested or an empty string if not
   if (license) {
@@ -40,22 +40,42 @@ function renderLicenseSection(license) {
 function generateMarkdown(data) {
   return `
   # ${data.title}
+  ${renderLicenseBadge(data.license)}  
 
   ## Description
   ${data.description}
 
-  ***
-
   ## Table of Contents
-  ${data.installation ?  `- [Installation](#installation)` : ``}
-  ${data.usage ? `- [Usage](#usage)`: ``}
-  ${data.contributing ? `- [Contributing](#contributing)`: ``}
-  ${data.license ? `- [Tests](#tests)`: ``}
-  ${data.license ? `- [Questions](#questions)`: ``}
-  ${data.license ? `- [License](#license)`: ``}
+  ${data.installation ?  `- [Installation](#installation)` : ''}
+  ${data.usage ? `- [Usage](#usage)`: ''}
+  ${data.contributing ? `- [Contributing](#contributing)`: ''}
+  ${data.tests ? `- [Tests](#tests)`: ''}
+  ${data.questions ? `- [Questions](#questions)`: ''}
+  ${data.license ? `- [License](#license)`: ''}
 
-  ${renderLicenseSection(data.license)}
+  ${data.license ? renderLicenseSection(data.license): ''}
+
+  ${data.installation ? renderSection('Installation', data.installation): ''}
+  ${data.usage ? renderSection('Usage', data.usage): ''}
+  ${data.contributing ? renderSection('Contributing', data.contributing): ''}
+  ${data.tests ? renderSection('Tests', data.tests): ''}
+  ${renderQuestions(data)}
+  ${data.license ? renderSection('License', data.license): ''}
+  
   `;
+}
+//returns the elements of the questions section
+function renderQuestions(data) {
+  if (data.questions) {
+    
+  }
+  return '';
+}
+//returns a header element with the provided title and renders the user input for it
+function renderSection (title, data) {
+  return `## ${title}
+  ${data}
+  `
 }
 
 module.exports = generateMarkdown;

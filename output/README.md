@@ -1,12 +1,9 @@
 
   # test
-
-  ***
+  ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)  
 
   ## Description
   a test project
-
-  ***
 
   ## Table of Contents
   - [Installation](#installation)
@@ -19,5 +16,25 @@
   
   ## License
   Licensed under [MIT License](https://opensource.org/licenses/MIT).
+  
+
+  ## Installation
+  npm install it
+  
+  ## Usage
+  don't break it
+  
+  ## Contributing
+  dont bother me
+  
+  ## Tests
+  no
+  
+  ## Questions
+  don't bother me
+  
+  ## License
+  MIT License
+  
   
   
