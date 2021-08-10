@@ -30,11 +30,13 @@
   ## Tests
   no
   
-  ## Questions
-  don't bother me
+  
+  ## Questions  
+  don't bother me  
+  [Email Me](mailto:my@email.me)  
+  [My GitHub Profile](https://github.com/githubusername)
   
   ## License
   MIT License
-  
-  
+    
   

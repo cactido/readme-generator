@@ -30,7 +30,6 @@ function renderLicenseLink(license) {
 }
 //returns the rendered license section
 function renderLicenseSection(license) {
-  console.log(license);
   return `
   ## License
   Licensed under ${renderLicenseLink(license)}.
@@ -60,14 +59,18 @@ function generateMarkdown(data) {
   ${data.contributing ? renderSection('Contributing', data.contributing): ''}
   ${data.tests ? renderSection('Tests', data.tests): ''}
   ${renderQuestions(data)}
-  ${data.license ? renderSection('License', data.license): ''}
-  
+  ${data.license ? renderSection('License', data.license): ''}  
   `;
 }
 //returns the elements of the questions section
 function renderQuestions(data) {
-  if (data.questions) {
-    
+  if (data.email) {
+    return `
+  ## Questions  
+  ${data.questions}  
+  [Email Me](mailto:${data.email})  
+  [My GitHub Profile](https://github.com/${data.username})
+  `
   }
   return '';
 }
